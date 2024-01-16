@@ -84,9 +84,30 @@ const getAll = async (req, res) => {
     }
   };
 
+  const update = async (req, res) => {
+    try {
+      const airport = await airportService.updateAirport(req.params.id, req.body);
+      return res.status(200).json({
+        data: airport,
+        success: true,
+        message: "Successfully updated airport",
+        err: {},
+      });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({
+        data: {},
+        success: false,
+        message: "Airport update is unsuccessfull",
+        error,
+      });
+    }
+  };
+
 module.exports = {
     create,
     get,
     destroy,
-    getAll
+    getAll,
+    update
 };
