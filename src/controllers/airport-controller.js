@@ -45,7 +45,28 @@ const get = async (req,res) => {
     }
 };
 
+const destroy = async (req,res) => {
+    try {
+        const response = await airportService.deleteAirport(req.params.id);
+        return res.status(200).json({
+            data: response,
+            success: true,
+            message: "Successfully deleted an Airport.",
+            err: {}
+        })
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            data: {},
+            success: false,
+            message: "Not able to delete an Airport.",
+            err: error
+        })
+    }
+};
+
 module.exports = {
     create,
-    get
+    get,
+    destroy
 };

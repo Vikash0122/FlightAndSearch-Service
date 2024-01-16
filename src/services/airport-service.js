@@ -27,6 +27,16 @@ class AirportService {
       throw { error };
     }
   }
+
+  async deleteAirport(id) {
+    try {
+      const deletedAirportResponse = await this.airportRepository.deleteAirport(id);
+      return deletedAirportResponse;
+    } catch (error) {
+      console.log("something went wrong in the service layer");
+      throw { error };
+    }
+  }
 }
 
 module.exports = AirportService;

@@ -25,6 +25,18 @@ class AirportRepository {
       throw { error };
     }
   }
+  async deleteAirport(id) {
+    try {
+      await Airport.destroy({
+        where: {
+            id: id
+        }
+    });
+    } catch (error) {
+      console.log("something went wrong the repository layer");
+      throw { error };
+    }
+  }
 }
 
 module.exports = AirportRepository;
