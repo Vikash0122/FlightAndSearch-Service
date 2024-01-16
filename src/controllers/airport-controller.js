@@ -25,6 +25,27 @@ const create = async (req,res) => {
     }
 };
 
+const get = async (req,res) => {
+    try {
+        const airport = await airportService.getAirport(req.params.id);
+          return res.status(201).json({
+            data: airport,
+            success: true,
+            message: "Airport fetched successfully",
+            error: {},
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            data: {},
+            success: false,
+            message: "Not able to fetch an Airport.",
+            err: error
+        });
+    }
+};
+
 module.exports = {
     create,
+    get
 };
