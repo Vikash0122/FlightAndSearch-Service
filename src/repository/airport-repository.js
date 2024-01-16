@@ -37,6 +37,16 @@ class AirportRepository {
       throw { error };
     }
   }
+
+  async getAllAirport(id) {
+    try {
+      const airport = await Airport.findAll();
+      return airport;
+    } catch (error) {
+      console.log("Something went wrong in the repository layer");
+      throw error;
+    }
+  }
 }
 
 module.exports = AirportRepository;

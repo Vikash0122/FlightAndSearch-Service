@@ -13,5 +13,6 @@ router.get("/city", CityController.getAll);
 router.post("/airport", AirportController.create);
 router.get("/airport/:id", AirportController.get);
 router.delete("/airport/:id", AirportController.destroy);
+router.get("/airport", AirportController.getAll);
 
 module.exports = router;
